@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 20:14:30 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/27 16:05:34 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/27 19:08:32 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/27 20:50:11 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 
-int	ft_isalpha(int num)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	return ((num >= 'A' && num <= 'Z') || (num >= 'a' && num <= 'z'));
-}
+	size_t	i;
+	char	*d;
+	char	*s;
 
-int main()
-{
-	ft_isalpha(100);
+	i = 0;
+	d = (char *)dst;
+	s = (char *)src;
+	if (d == s || n == 0)
+		return (dst);
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
 }

@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 20:14:30 by eprzybyl          #+#    #+#             */
+/*   Created: 2023/10/26 13:19:22 by eprzybyl          #+#    #+#             */
 /*   Updated: 2023/10/27 16:05:34 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int	ft_isalpha(int num)
+int	ft_isprint(int num)
 {
-	return ((num >= 'A' && num <= 'Z') || (num >= 'a' && num <= 'z'));
-}
-
-int main()
-{
-	ft_isalpha(100);
+	return ((num >= 32 && num <= 126));
 }

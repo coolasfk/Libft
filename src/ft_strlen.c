@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 20:14:30 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/27 16:05:34 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/26 14:46:33 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/27 16:07:13 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 
-int	ft_isalpha(int num)
+size_t	ft_strlen(const char *str)
 {
-	return ((num >= 'A' && num <= 'Z') || (num >= 'a' && num <= 'z'));
-}
+	size_t	i;
 
-int main()
-{
-	ft_isalpha(100);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

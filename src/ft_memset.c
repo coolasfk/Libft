@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 20:14:30 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/27 16:05:34 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/27 16:42:40 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/27 17:23:53 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <string.h>
 
-int	ft_isalpha(int num)
-{
-	return ((num >= 'A' && num <= 'Z') || (num >= 'a' && num <= 'z'));
-}
+//#include <libft.h>
 
-int main()
+void	*ft_memset(void *b, int c, size_t len)
 {
-	ft_isalpha(100);
+	char	*a;
+	size_t	i;
+
+	i = 0;
+	a = b;
+	while (len > i)
+	{
+		a[i] = c;
+		i++;
+	}
+	return (a);
 }
+/*
+int	main(void)
+{
+	char	str[] = "hello";
+
+	ft_memset(str, 'r', 3);
+}
+*/

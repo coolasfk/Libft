@@ -11,4 +11,5 @@
 "files.insertFinalNewline": true,
 "norminette.command": "norminette",
 "norminette.fileregex": "^ft.*\\.[ch]$",
+"C_Cpp.errorSquiggles": "disabled",
 }

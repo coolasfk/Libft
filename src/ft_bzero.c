@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 20:14:30 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/27 16:05:34 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/27 18:32:08 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/27 18:39:30 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <strings.h>
 
-int	ft_isalpha(int num)
+void	ft_bzero(void *s, size_t n)
 {
-	return ((num >= 'A' && num <= 'Z') || (num >= 'a' && num <= 'z'));
-}
+	size_t i;
+	char *a;
 
-int main()
-{
-	ft_isalpha(100);
+	i = 0;
+	a = s;
+
+	while (i < n)
+	{
+		a[i] = '\0';
+		i++;
+	}
 }

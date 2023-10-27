@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 20:14:30 by eprzybyl          #+#    #+#             */
+/*   Created: 2023/10/26 13:04:37 by eprzybyl          #+#    #+#             */
 /*   Updated: 2023/10/27 16:05:34 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int	ft_isalpha(int num)
-{
-	return ((num >= 'A' && num <= 'Z') || (num >= 'a' && num <= 'z'));
-}
 
-int main()
+int	ft_isascii(int num)
 {
-	ft_isalpha(100);
+	return (num >= 0 && num <= 127);
 }
