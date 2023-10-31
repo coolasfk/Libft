@@ -1,54 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 21:18:48 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/28 13:47:53 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/27 19:08:32 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/29 12:10:19 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 	char	*d;
 	char	*s;
 
+	i = 0;
 	d = (char *)dst;
 	s = (char *)src;
-	i = 0;
-	if (d == s)
+	if (d == s || n == 0)
+		return (dst);
+	while (i < n)
 	{
-		return (d);
+		d[i] = s[i];
+		i++;
 	}
-	if (d < s)
-	{
-		while (i < len)
-		{
-			d[i] = s[i];
-			i++;
-		}
-		return (d);
-	}
-	else
-	{
-		while (len > 0)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
-	}
-	return (d);
-}
-
-int	main(int argc, char *argv[])
-{
-	(void)argc;
-	printf("%s", (char *)ft_memmove(argv[1], argv[2], atoi(argv[3])));
+	return (dst);
 }

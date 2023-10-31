@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 16:42:40 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/27 17:23:53 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/29 14:25:07 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/31 17:31:37 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-//#include <libft.h>
-
-void	*ft_memset(void *b, int c, size_t len)
+size_t	ft_strlcat(char *s1, const char *s2, size_t n)
 {
-	char	*a;
 	size_t	i;
+	size_t	s1_len;
+	size_t	s2_len;
 
 	i = 0;
-	a = b;
-	while (len > i)
+	s2_len = ft_strlen(s2);
+	if (n == 0)
+		return (s2_len + n);
+	s1_len = 0;
+	while (s1[s1_len])
+		s1_len++;
+	while (s2[i] && n - 1 > s1_len + i)
 	{
-		a[i] = c;
+		s1[s1_len + i] = s2[i];
 		i++;
 	}
-	return (a);
+	s1[s1_len + i] = '\0';
+	if (n > s1_len)
+		return (s2_len + s1_len);
+	return (s2_len + n);
 }
-/*
-int	main(void)
-{
-	char	str[] = "hello";
-
-	ft_memset(str, 'r', 3);
-}
-*/

@@ -6,13 +6,13 @@
 #    By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 15:33:49 by eprzybyl          #+#    #+#              #
-#    Updated: 2023/10/27 18:56:06 by eprzybyl         ###   ########.fr        #
+#    Updated: 2023/10/29 12:38:55 by eprzybyl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #library name:
 
-NAME = Libft.a
+NAME = libft.a
 
 #compiler:
 
@@ -20,11 +20,12 @@ CC = gcc
 
 #flags:
 
-FLAGS = -Wall -Wextra -Werror -I../libft -MMD -MP
+FLAGS = -Wall -Wextra -Werror
 
+HEADER = libft.h
 #remove (be careful here, its forced!):
 
-RM = rm -rf
+RM = rm -f
 
 #creates, modifies, and extracts from archives
 
@@ -32,8 +33,7 @@ AR = ar rcs
 
 #basic source files:
 
-BASICSRC = src
-SRC1=$(wildcard $(BASICSRC)/*.c)
+SRC1=$(wildcard *.c)
 
 #object files .o
 
@@ -57,10 +57,6 @@ $(NAME): $(OBJ1)
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
 
-#auto-generating dependencies in case I change headers:
-
-DEPS = $(OBJ1:.o=.d)
-
 #cleaning:
 
 clean:
@@ -73,8 +69,4 @@ fclean: clean
 
 re: fclean all
 
-#include auto-generated dependency files
 
--include $(DEPS)
-
-#run help to view the commands:

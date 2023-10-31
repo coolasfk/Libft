@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:57:40 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/27 16:04:38 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/10/31 11:30:35 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/10/31 13:21:43 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-int	ft_isalnum(int num)
+int	ft_toupper(int c)
 {
-	return ((num >= 48 && num <= 57) || (num >= 'A' && num <= 'Z')
-		|| (num >= 'a' && num <= 'z'));
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }
