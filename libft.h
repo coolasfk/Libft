@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:41:50 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/10/31 22:32:08 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:12:06 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ char				*ft_strrchr(const char *s, int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+char				*ft_strnstr(const char *s1, const char *s2, size_t n);
+int					ft_atoi(const char *s);
 
 #endif
