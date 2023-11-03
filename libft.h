@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:41:50 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/01 14:12:06 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2023/11/02 19:02:43 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-/*
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-*/
 
 int					ft_isalnum(int num);
 int					ft_isalpha(int num);
@@ -46,5 +38,10 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *s);
+void				*ft_calloc(size_t count, size_t size);
+char				*ft_strdup(const char *s1);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strtrim(char const *s1, char const *set);
 
 #endif

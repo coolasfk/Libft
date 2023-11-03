@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 17:12:54 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/02 20:59:48 by eprzybyl         ###   ########.fr       */
+/*   Created: 2023/11/01 22:48:37 by eprzybyl          #+#    #+#             */
+/*   Updated: 2023/11/03 13:15:38 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	len;
+	char	*new;
+	size_t	start;
+	size_t	end;
 
-	len = 0;
-	c = c % 256;
-	while (s[len])
-		len++;
-	while (len > -1)
+	start = 0;
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(" "));
+	while (s1[start])
 	{
-		if (s[len] == c)
-			return ((char *)s + len);
-		len--;
+		if (ft_strchr(set, s1[start]) == NULL)
+			break ;
+		start++;
 	}
-	return (NULL);
+	end = ft_strlen(s1);
+	while (end > start)
+	{
+		if (ft_strchr(set, s1[end - 1]) == NULL)
+			break ;
+		end--;
+	}
+	new = ft_substr(s1, start, end - start);
+	return (new);
 }
