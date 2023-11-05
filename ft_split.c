@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 10:13:39 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/05 16:50:30 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:59:19 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ static int	count_words(char const *s, char c)
 char	**populate_split(char const *s, char c, int word_count, char **split)
 {
 	int	i;
-	int	start;
+	int	strt;
 
 	i = 0;
-	start = -1;
+	strt = -1;
 	word_count = 0;
 	while (s[i])
 	{
 		if (s[i] != c)
 		{
-			start++;
+			strt++;
 		}
-		if ((s[i + 1] == c && start != -1) || (s[i + 1] == '\0' && start != -1))
+		if ((s[i + 1] == c && strt != -1) || (s[i + 1] == '\0' && strt != -1))
 		{
-			split[word_count++] = ft_substr(s, i - start, start + 1);
-			start = -1;
+			split[word_count++] = ft_substr(s, i - strt, strt + 1);
+			strt = -1;
 		}
 		i++;
 	}
