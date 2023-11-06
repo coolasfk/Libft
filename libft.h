@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:41:50 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/05 16:59:16 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:13:08 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif
