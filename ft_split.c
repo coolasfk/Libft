@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 10:13:39 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/05 16:59:19 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:19:13 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,39 @@ static int	count_words(char const *s, char c)
 	return (word_count);
 }
 
-char	**populate_split(char const *s, char c, int word_count, char **split)
+char	*free_split(char **split, int word_count)
+{
+	while (word_count > 0)
+	{
+		free(split[word_count - 1]);
+		word_count--;
+	}
+	free(split);
+	return (NULL);
+}
+
+char	**populate_split(char const *s, char c, char **split, int word_count)
 {
 	int	i;
-	int	strt;
+	int	start;
+	int	len;
 
 	i = 0;
-	strt = -1;
 	word_count = 0;
 	while (s[i])
 	{
-		if (s[i] != c)
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
+			start = i;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 		{
-			strt++;
-		}
-		if ((s[i + 1] == c && strt != -1) || (s[i + 1] == '\0' && strt != -1))
-		{
-			split[word_count++] = ft_substr(s, i - strt, strt + 1);
-			strt = -1;
+			len = i - start + 1;
+			split[word_count] = ft_substr(s, start, len);
+			if (!split[word_count])
+			{
+				free_split(split, word_count);
+				return (NULL);
+			}
+			word_count++;
 		}
 		i++;
 	}
@@ -62,7 +77,7 @@ char	**ft_split(char const *s, char c)
 	split = (char **)malloc((word_count + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
-	split = populate_split(s, c, word_count, split);
+	split = populate_split(s, c, split, word_count);
 	return (split);
 }
 /*

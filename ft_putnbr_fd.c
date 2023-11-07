@@ -6,38 +6,39 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:37:30 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/06 16:02:05 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:42:01 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-void ft_putnbr_fd(int n, int fd)
+static void	write_this(int n, int fd)
 {
-	int i;
-	i = 0;
-	char to_write;
+	n += '0';
+	write(fd, &n, 1);
+}
 
-	if(n == -2147483648)
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
 	{
-write(fd, "-2147483648", 11);
-		return;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	if(n < 0)
+	if (n < 0)
 	{
 		write(fd, "-", 1);
 		n = -n;
 	}
-	while(n != 0)
-	{
-		to_write = n%10 + '0';
-		write(fd, &to_write, 1);
-		n /= 10;
-	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	if (n <= 9)
+		write_this(n, fd);
+	if (n > 9)
+		write_this(n % 10, fd);
 }
 /*
-int main(void)
+int	main(void)
 {
 	ft_putnbr_fd(-4433, 1);
 }
