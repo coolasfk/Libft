@@ -6,67 +6,80 @@
 #    By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 15:33:49 by eprzybyl          #+#    #+#              #
-#    Updated: 2023/11/01 14:13:01 by eprzybyl         ###   ########.fr        #
+#    Updated: 2023/11/09 22:03:16 by eprzybyl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#library name:
-
+# Library name:
 NAME = libft.a
 
-#compiler:
-
+# Compiler:
 CC = gcc
 
-#flags:
-
+# Flags:
 FLAGS = -Wall -Wextra -Werror
 
+# Header files:
 HEADER = libft.h
-#remove (be careful here, its forced!):
 
+# Remove command (be careful here, it's forced!):
 RM = rm -f
 
-#creates, modifies, and extracts from archives
-
+# Archiver and its flags to create archive:
 AR = ar rcs
 
-#basic source files:
+# Source files:
+SRC = ft_isalnum.c ft_isprint.c ft_memcmp.c ft_putchar_fd.c ft_split.c \
+	ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
+	ft_itoa.c ft_memcpy.c ft_putendl_fd.c ft_strchr.c ft_strlcpy.c \
+	ft_strnstr.c ft_tolower.c ft_bzero.c ft_isascii.c ft_memmove.c \
+	ft_putnbr_fd.c ft_strdup.c ft_strlen.c ft_strrchr.c ft_toupper.c \
+	ft_calloc.c ft_isdigit.c ft_memchr.c ft_memset.c ft_putstr_fd.c \
+	ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c
 
-SRC1=$(wildcard *.c)
+# Bonus source files:
+BONUS = ft_lstadd_front_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
-#object files .o
+# Object files from source files:
+OBJ = $(SRC:.c=.o)
 
-OBJ1= $(SRC1:.c=.o)
+# Object files from bonus source files:
+BONUS_OBJS = $(BONUS:.c=.o)
 
-#makes sure those names are reserved for makefile:
+# Targets that do not represent files:
+.PHONY: all clean fclean re bonus
 
-.PHONY: all clean fclean re
-
-#Rules to create the library
-
-#default rule:
-
+# Default rule:
 all: $(NAME)
 
-#Builds the static library from object files:
+# Builds the static library from object files:
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
 
-$(NAME): $(OBJ1)
-	$(AR) $(NAME) $(OBJ1)
-
-%.o: %.c
+# Compiles .c to .o
+%.o: %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
-#cleaning:
+# Building library with bonus part:
+bonus: $(OBJ) $(BONUS_OBJS)
+	$(AR) $(NAME) $(OBJ) $(BONUS_OBJS)
 
+# Cleaning object files:
 clean:
-	$(RM) $(OBJ1)
+	$(RM) $(OBJ) $(BONUS_OBJS)
 
+# Cleaning everything:
 fclean: clean
 	$(RM) $(NAME)
 
-#cleaning everything and REbuilding the project:
-
+# Rebuilding the project:
 re: fclean all
 
-
+# How to use this Makefile:
+# To build the regular library: make all or make
+# To build the library with bonus functions: make bonus
+# To clean object files: make clean
+# To remove the library and object files: make fclean
+# To recompile the library: make re
